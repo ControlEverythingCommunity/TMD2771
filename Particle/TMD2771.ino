@@ -10,9 +10,9 @@
 // TMD2771 I2C address is 39(57)
 #define Addr 0x39
 
-float luminance1 = 0.0, luminance2 = 0.0, luminance = 0.0, CPL = 0.0;
-float c0Data = 0.0, c1data = 0.0;
-float proximity = 0.0;
+double luminance1 = 0.0, luminance2 = 0.0, luminance = 0.0, CPL = 0.0;
+double c0Data = 0.0, c1data = 0.0;
+double proximity = 0.0;
 
 void setup()
 {
@@ -128,7 +128,7 @@ void loop()
   
   // Output data to dashboard
   Particle.publish("Ambient Light lumonance : ", String(liminance));
-  delay(100);
+  delay(1000);
   Particle.publish("Proximity of the device : ", String(proximity));
   delay(1000);
 }
