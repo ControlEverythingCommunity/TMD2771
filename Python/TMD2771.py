@@ -31,7 +31,7 @@ bus.write_byte_data(0x39, 0x03 | 0xA0, 0xFF)
 #		0x04(04)	Pulse count = 4
 bus.write_byte_data(0x39, 0x0E | 0xA0, 0x04)
 # TMD2771 address, 0x39(57)
-# Select control register 0x0F(15), with command register, 0x80(128)
+# Select control register 0x0F(15), with command register, 0xA0(160)
 #		0x20(32)	120 mA LED strength, Proximity uses CH1 diode
 #					Proximity gain 1x, ALS gain 1x
 bus.write_byte_data(0x39, 0x0F | 0xA0, 0x20)
