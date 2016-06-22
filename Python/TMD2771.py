@@ -16,15 +16,15 @@ bus = smbus.SMBus(1)
 bus.write_byte_data(0x39, 0x00 | 0xA0, 0x0F)
 # TMD2771 address, 0x39(57)
 # Select ALS time register 0x01(01), with command register, 0xA0(160)
-#		0xFF(255)	Time - 101 ms
+#		0xDB(219)	ATime - 101 ms
 bus.write_byte_data(0x39, 0x01 | 0xA0, 0xDB)
 # TMD2771 address, 0x39(57)
 # Select proximity ADC time register 0x02(02), with command register, 0xA0(160)
-#		0xFF(255)	Time - 2.72 ms
+#		0xFF(255)	PTime - 2.72 ms
 bus.write_byte_data(0x39, 0x02 | 0xA0, 0xFF)
 # TMD2771 address, 0x39(57)
 # Select Wait time register 0x03(03), with command register, 0xA0(160)
-#		0xFF(255)	Time - 2.72 ms
+#		0xFF(255)	WTime - 2.72 ms
 bus.write_byte_data(0x39, 0x03 | 0xA0, 0xFF)
 # TMD2771 address, 0x39(57)
 # Select pulse count register 0x0E(14), with command register, 0xA0(160)
