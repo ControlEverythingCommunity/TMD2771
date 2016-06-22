@@ -11,7 +11,7 @@
 #define Addr 0x39
 
 double luminance1 = 0.0, luminance2 = 0.0, luminance = 0.0, CPL = 0.0;
-double c0Data = 0.0, c1data = 0.0;
+double c0Data = 0.0, c1Data = 0.0;
 double proximity = 0.0;
 
 void setup()
