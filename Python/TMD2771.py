@@ -39,7 +39,7 @@ bus.write_byte_data(0x39, 0x0F | 0xA0, 0x20)
 time.sleep(0.5)
 
 # TMD2771 address, 0x39(57)
-# Read data back from 0x14(20), with command register, 0x80(128), 6 bytes
+# Read data back from 0x14(20), with command register, 0xA0(160), 6 bytes
 # c0Data LSB, c0Data MSB, c1Data LSB, c1Data MSB, Proximity LSB, Proximity MSB
 data = bus.read_i2c_block_data(0x39, 0x14 | 0xA0, 6)
 
