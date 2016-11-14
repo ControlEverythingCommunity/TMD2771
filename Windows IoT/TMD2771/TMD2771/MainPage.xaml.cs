@@ -17,7 +17,7 @@ namespace TMD2771
 	// App that reads data over I2C from an TMD2771 Proximity and Light Sensor
 	public sealed partial class MainPage : Page
 	{
-		private const byte PROXALS_I2C_ADDR = 0x39;			// I2C address of the TMD2771
+		private const byte PROXALS_I2C_ADDR = 0x39;		// I2C address of the TMD2771
 		private const byte PROXALS_REG_COMMAND = 0xA0;		// Command register
 		private const byte PROXALS_REG_ENABLE = 0x00;		// Enables state and interrupt register
 		private const byte PROXALS_REG_ATIME = 0x01;		// ALS ADC time register
@@ -45,7 +45,7 @@ namespace TMD2771
 
 		private async void InitI2CProxALS()
 		{
-			string aqs = I2cDevice.GetDeviceSelector();				// Get a selector string that will return all I2C controllers on the system
+			string aqs = I2cDevice.GetDeviceSelector();		// Get a selector string that will return all I2C controllers on the system
 			var dis = await DeviceInformation.FindAllAsync(aqs);	// Find the I2C bus controller device with our selector string
 			if (dis.Count == 0)
 			{
@@ -61,8 +61,8 @@ namespace TMD2771
 				Text_Status.Text = string.Format(
 					"Slave address {0} on I2C Controller {1} is currently in use by " +
 					"another application. Please ensure that no other applications are using I2C.",
-					settings.SlaveAddress,
-					dis[0].Id);
+				settings.SlaveAddress,
+				dis[0].Id);
 				return;
 			}
 
@@ -73,11 +73,11 @@ namespace TMD2771
 				The second byte is the contents that we want to write to the register.
 			*/
 			byte[] WriteBuf_Enable = new byte[] { PROXALS_REG_ENABLE | PROXALS_REG_COMMAND, 0x0F };		// 0x03 sets Power ON and Wait, Proximity and ALS features are enabled
-			byte[] WriteBuf_Atime = new byte[] { PROXALS_REG_ATIME | PROXALS_REG_COMMAND, 0xDB };			// 0xDB sets ATIME : 101 ms, 37 cycles, 37888 max count
-			byte[] WriteBuf_Ptime = new byte[] { PROXALS_REG_PTIME | PROXALS_REG_COMMAND, 0xFF };			// 0x00 sets PTIME : 2.72 ms, 1 cycle, 1023 max count
-			byte[] WriteBuf_Wtime = new byte[] { PROXALS_REG_WTIME | PROXALS_REG_COMMAND, 0xFF };			// 0xFF sets WTIME : 2.72 ms (WLONG = 0), 1 wait time
-			byte[] WriteBuf_Ppulse = new byte[] { PROXALS_REG_PPULSE | PROXALS_REG_COMMAND, 0x04 };			// 0x04 sets 4 number of proximity pulses to be transmitted
-			byte[] WriteBuf_Control = new byte[] { PROXALS_REG_CONTROL | PROXALS_REG_COMMAND, 0x20 };		// 0x20 sets 120 mA LED strength, Proximity uses CH1 diode, Proximity gain 1x, ALS gain 1x
+			byte[] WriteBuf_Atime = new byte[] { PROXALS_REG_ATIME | PROXALS_REG_COMMAND, 0xDB };		// 0xDB sets ATIME : 101 ms, 37 cycles, 37888 max count
+			byte[] WriteBuf_Ptime = new byte[] { PROXALS_REG_PTIME | PROXALS_REG_COMMAND, 0xFF };		// 0x00 sets PTIME : 2.72 ms, 1 cycle, 1023 max count
+			byte[] WriteBuf_Wtime = new byte[] { PROXALS_REG_WTIME | PROXALS_REG_COMMAND, 0xFF };		// 0xFF sets WTIME : 2.72 ms (WLONG = 0), 1 wait time
+			byte[] WriteBuf_Ppulse = new byte[] { PROXALS_REG_PPULSE | PROXALS_REG_COMMAND, 0x04 };		// 0x04 sets 4 number of proximity pulses to be transmitted
+			byte[] WriteBuf_Control = new byte[] { PROXALS_REG_CONTROL | PROXALS_REG_COMMAND, 0x20 };	// 0x20 sets 120 mA LED strength, Proximity uses CH1 diode, Proximity gain 1x, ALS gain 1x
 
 			// Write the register settings
 			try
@@ -181,4 +181,3 @@ namespace TMD2771
 		}
 	}
 }
-
